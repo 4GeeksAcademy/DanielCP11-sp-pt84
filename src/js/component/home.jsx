@@ -1,25 +1,70 @@
-import React from "react";
+import React, { useState } from "react";
+import Lamp from "./Lamp";
 
 //include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
+
+
+const styleWire = {
+	margin: "auto",
+	width: "0.5em",
+	height: "1em"
+};
+
+const styleContainer = {
+	margin: "auto",
+	paddingTop: 3,
+	paddingBottom: 3,
+	width: "3em",
+	borderRadius: "10px"
+};
+
+const styleButtom = {
+	margin: "1em",
+	width: "2em",
+	height: "2em",
+	border: "none",
+	borderRadius: "50%",
+	fontSize: "1em"
+};
 
 //create your first component
 const Home = () => {
+	const [selectLamp, setSelectLamp] = useState(-1);
+	const [lamps, setLamps] = useState(["red", "yellow", "green"]);
+
+	const clickLAmp = (index) => {
+		setSelectLamp(selectLamp === index ? -1 : index);
+	};
+
+	const clickButtomChange = () => {
+		setSelectLamp((currentLamp) => {if (currentLamp == lamps.length-1){return currentLamp = 0} return currentLamp + 1 });
+	};
+	
+	const clickButtomPurple = () => {
+		if (lamps.length == 3){
+			setLamps([...lamps, "purple"]);
+		};
+}
 	return (
-		<div className="text-center">
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
+		<>
+		<div className="bg-dark" style={styleWire}></div>
+		<div className="bg-dark" style={styleContainer}>
+			{lamps.map((color, index) => (
+				<Lamp
+					color={color}
+					key={index}
+					isOn={selectLamp === index}
+					onClick={() => {clickLAmp(index)}}
+				/>
+			))}
 		</div>
+		<div className="d-flex justify-content-center">
+			<button type="btn" style={styleButtom} onClick={clickButtomChange}>
+			</button>
+			<button type="btn" style={{...styleButtom, background: "purple"}} onClick={clickButtomPurple}>
+			</button>
+		</div>
+		</>
 	);
 };
 
