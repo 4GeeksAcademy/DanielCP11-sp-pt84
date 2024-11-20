@@ -6,23 +6,23 @@ import Lamp from "./Lamp";
 
 const styleWire = {
 	margin: "auto",
-	width: "0.5em",
-	height: "1em"
+	width: "1em",
+	height: "3em"
 };
 
 const styleContainer = {
 	margin: "auto",
-	paddingTop: 3,
-	paddingBottom: 3,
-	width: "3em",
+	paddingTop: 7,
+	paddingBottom: 7,
+	width: "9em",
 	borderRadius: "10px"
 };
 
 const styleButtom = {
 	margin: "1em",
-	width: "2em",
-	height: "2em",
-	border: "none",
+	width: "4em",
+	height: "4em",
+	border: "solid",
 	borderRadius: "50%",
 	fontSize: "1em"
 };
@@ -58,10 +58,12 @@ const Home = () => {
 				/>
 			))}
 		</div>
-		<div className="d-flex justify-content-center">
-			<button type="btn" style={styleButtom} onClick={clickButtomChange}>
+		<div className="d-flex justify-content-center ">
+			<button type="button" style={styleButtom} onClick={clickButtomChange}>
+			<i className="fa-solid fa-arrows-rotate fs-2"></i>
 			</button>
-			<button type="btn" style={{...styleButtom, background: "purple"}} onClick={clickButtomPurple}>
+			<button type="button" style={{...styleButtom, background: "purple"}} onClick={clickButtomPurple}>
+			<i class="fa-solid fa-circle-plus fs-1"></i>
 			</button>
 		</div>
 		</>

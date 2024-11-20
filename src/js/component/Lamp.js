@@ -4,9 +4,9 @@ import React from 'react'
 
 const Lamp = ({color, isOn, onClick}) => {  
   let styleLamp={
-        marginLeft: "0.5em",
-        width: "2em",
-        height: "2em",
+        marginLeft: "1em",
+        width: "7em",
+        height: "7em",
         borderRadius: "50%",
         opacity: "50%",
         background: color
